@@ -19,7 +19,7 @@
 
     <div class="contaienr">
         <?php
-        include("config.php");
+        include("../../model/config/config.php");
         switch (@$_REQUEST["page"]) {
             case 'novo':
                 include 'novo-usuario/novo-usuario.php';
