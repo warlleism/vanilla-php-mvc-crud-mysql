@@ -1,0 +1,10 @@
+.container-list-alunos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 300px;
+    border-radius: 5px;
+    color: #fff;
+}
