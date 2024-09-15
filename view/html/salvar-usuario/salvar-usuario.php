@@ -29,7 +29,6 @@
             $id = $_POST['id'] ?? null;
             echo $controller->excluir($id);
             break;
-
         default:
             echo "Ação inválida.";
             break;

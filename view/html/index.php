@@ -13,7 +13,6 @@
             <li><a href="index.php">Início</a></li>
             <li><a href="?page=novo">Novo usuário</a></li>
             <li><a href="?page=listar">Listar usuários</a></li>
-            <li><a href="?page=editar">Editar usuários</a></li>
         </ul>
     </nav>
 
@@ -29,9 +28,6 @@
                 break;
             case 'salvar':
                 include 'salvar-usuario/salvar-usuario.php';
-                break;
-            case 'editar':
-                include 'editar-usuario/editar-usuario.php';
                 break;
             default:
                 print "<h1>Bem Vindos!</h1>";

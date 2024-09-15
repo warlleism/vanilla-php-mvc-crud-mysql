@@ -21,6 +21,7 @@
                 <th>Email</th>
                 <th>Data de Nascimento</th>
                 <th>Idade</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -42,15 +43,33 @@
                     echo "<td>" . htmlspecialchars($usuario['email']) . "</td>";
                     echo "<td>" . htmlspecialchars($usuario['data_nascimento']) . "</td>";
                     echo "<td>" . htmlspecialchars($usuario['idade']) . "</td>";
-                    echo "<td><span id='icon-edit' style='cursor:pointer' class='material-symbols-outlined'>edit</span></td>";
+                    echo "<td>
+                            <form method='POST' action='?page=salvar'>
+                                <input type='hidden' name='acao' value='excluir'/>
+                                <input type='hidden' name='id' value='" . $usuario['id'] . "'/>
+                                <button type='submit' style='background:none;border:none;color:red;cursor:pointer;'>
+                                    <span class='material-symbols-outlined'>delete</span>
+                                </button>
+                            </form>
+                        </td>";
                     echo "</tr>";
                 }
             } else {
-                echo "<tr><td colspan='5'>Nenhum usuário encontrado.</td></tr>";
+                echo "<tr><td colspan='6'>Nenhum usuário encontrado.</td></tr>";
+            }
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'excluir') {
+                $id = $_POST['id'] ?? null;
+                if ($id) {
+                    $userController->excluir($id);
+                    header("Location: listar-usuarios.php");
+                    exit();
+                }
             }
 
             $conn->close();
             ?>
+
         </tbody>
     </table>
 
